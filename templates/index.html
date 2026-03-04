@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-tag">
+                <span class="status-dot"></span>
+                sistema ativo
+            </div>
+            <h1>Task<span>Manager</span></h1>
+            <p class="subtitle">// gerenciador de tarefas com Flask + Python</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-value" id="stat-total">0</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="stat-pending">0</span>
+                <span class="stat-label">Pendentes</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="stat-done">0</span>
+                <span class="stat-label">Concluídas</span>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <label class="form-label">Nova tarefa</label>
+            <div class="form-row">
+                <input type="text" id="input-title" placeholder="Título da tarefa..." />
+                <button class="btn btn-primary" onclick="addTask()">+ Adicionar</button>
+            </div>
+            <input type="text" id="input-desc" placeholder="Descrição (opcional)..." style="width:100%" />
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="setFilter('all', this)">Todas</button>
+            <button class="filter-btn" onclick="setFilter('pending', this)">Pendentes</button>
+            <button class="filter-btn" onclick="setFilter('done', this)">Concluídas</button>
+        </div>
+
+        <div id="task-list">
+            <div class="empty" id="empty-state" style="display:flex">
+                <div class="empty-icon">◻</div>
+                <span>Nenhuma tarefa encontrada.</span>
+                <span style="font-size:11px">Adicione uma acima para começar.</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
